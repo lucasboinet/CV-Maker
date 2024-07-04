@@ -1,0 +1,17 @@
+.header {
+    height: 60px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: relative;
+
+    .profile_picture {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 45px;
+        width: 45px;
+        border-radius: 100%;
+        background-color: lightgrey;
+        cursor: pointer;
+    }
+}

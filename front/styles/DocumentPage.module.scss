@@ -1,0 +1,58 @@
+
+.dnd {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    .save_buttons {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        z-index: 100;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .zoomWrapper {
+        background-color: #F6F6F6;
+        width: calc(100% - 100px);
+        margin-left: 100px;
+        height: calc(100vh - 60px);
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        > div {
+            width: 100%;
+
+        }
+
+        .sheetWrapper {
+            min-width: 595px;
+            position: relative;
+            margin-left: 66px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .sheetTitle {
+                width: 595px;
+            }
+
+            .sheet {
+                position: relative;
+                width: 595px;
+                height: 842px;
+                overflow: hidden;
+                background-color: #fff;
+                outline: none;
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            }
+        }
+    }
+}
