@@ -29,7 +29,7 @@ const DocumentPage = ({ id }) => {
   const timeout = useRef();
   const previewTimeout = useRef();
   const printElement = useRef();
-  const [{ user },] = useAuthState();
+  const [{ user }] = useAuthState();
 
   const moveItem = useCallback(
     (id, posX, posY) => {
@@ -45,7 +45,7 @@ const DocumentPage = ({ id }) => {
       accept: 'image',
       hover: (item, monitor) => {
         const delta = monitor.getDifferenceFromInitialOffset();
-        const scale = zoomContext.current.state.scale;
+        const scale = zoomContext.current.state?.scale || 1;
         const left = Math.round(item.posX + delta.x / scale);
         let top = Math.round(item.posY + delta.y / scale);
 
@@ -188,31 +188,31 @@ const DocumentPage = ({ id }) => {
     }
   };
 
-  const toFore = ({id}) => {
+  const toFore = ({ id }) => {
     const index = items.findIndex((e) => e.id === id);
-    if(index < items.length - 1) {
+    if (index < items.length - 1) {
       setItems((old) => {
         const element = old[index];
         let newItems = [...old];
         newItems[index] = old[index + 1];
         newItems[index + 1] = element;
         return newItems;
-      })
+      });
     }
-  }
+  };
 
-  const toBack = ({id}) => {
+  const toBack = ({ id }) => {
     const index = items.findIndex((e) => e.id === id);
-    if(index > 0) {
+    if (index > 0) {
       setItems((old) => {
         const element = old[index];
         let newItems = [...old];
         newItems[index] = old[index - 1];
         newItems[index - 1] = element;
         return newItems;
-      })
+      });
     }
-  }
+  };
 
   const toggleSelectedItem = (value) => {
     setColorPicker(null);
@@ -329,8 +329,8 @@ const DocumentPage = ({ id }) => {
                         type={item.type}
                         width={item.width}
                         height={item.height}
-                        posX={item.posX}
-                        posY={item.posY}
+                        posX={item.posX || 0}
+                        posY={item.posY || 0}
                         rotate={item.rotate}
                         preserveratio={item.preserveratio}
                         moduleParams={itemParams}
